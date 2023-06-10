@@ -1,0 +1,15 @@
+:root {
+    --height-input: 36px;
+    --border-radius: 4px;
+    --color-red-400: #eb3333;
+    --color-red-500: #e60000;
+    --color-red-600: #b80000;
+    --color-light-green-400: #73c663;
+    --color-light-green-500: #50b83c;
+    --color-light-green-600: #409330;
+    --color-teal-400: #34b6a2;
+    --color-teal-500: #01a38a;
+    --color-teal-400: #01836f;
+    --color-white: #fff;
+    --color-border: #e0e0e0;
+}

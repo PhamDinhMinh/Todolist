@@ -1,0 +1,22 @@
+.label__textfield {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+    cursor: pointer;
+}
+
+.textfield__input {
+    width: 100%;
+    font-size: 14px;
+    border-radius: var(--border-radius);
+    line-height: 18px;
+    padding: 6px 12px;
+    border: 1px solid #e0e0e0;
+    height: var(--height-input);
+}
+
+.textfield__input:focus {
+    outline: none;
+    border: 1px solid var(--color-light-green-500);
+}

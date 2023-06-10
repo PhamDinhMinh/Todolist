@@ -1,0 +1,71 @@
+.form {
+    padding: 30px;
+}
+
+.form__controller {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.form__controller label {
+    margin-bottom: 8px;
+}
+
+.form__controller div {
+    position: relative;
+}
+
+.input-textarea {
+    border: 1px solid var(--color-border);
+    resize: none;
+    outline: none;
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    width: 100%;
+}
+
+.form__controller .input-textarea:focus {
+    outline: none;
+    border: 1px solid var(--color-light-green-500);
+}
+
+.form__controller textarea {
+    min-height: 80px;
+}
+
+.form__controller select {
+    height: var(--height-input);
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 400;
+    appearance: none;
+    cursor: pointer;
+}
+
+.form__controller select option {
+    height: 26px;
+}
+
+.form__controller div input {
+    height: var(--height-input);
+}
+
+.wraper {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.button__submit {
+    width: 100%;
+    background-color: var(--color-light-green-500);
+    color: var(--color-white);
+    margin-top: 16px;
+}
+
+.button__submit:hover {
+    background-color: var(--color-light-green-400);
+}

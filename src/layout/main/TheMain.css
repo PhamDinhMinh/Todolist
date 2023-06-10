@@ -1,0 +1,104 @@
+.body {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    max-width: 1200px;
+    border: 1px solid var(--color-border);
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__text {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.newtask::-webkit-scrollbar,
+.todolist::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+}
+/* Track */
+.newtask::-webkit-scrollbar-track,
+.todolist::-webkit-scrollbar-track {
+    background-color: #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* newtask */
+.newtask {
+    overflow-y: auto;
+    padding: 30px 40px;
+    border-right: 1px solid var(--color-border);
+}
+
+/* todolist */
+.todolist {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.todolist h3 {
+    margin-bottom: 64px;
+}
+
+.content {
+    padding: 30px 40px;
+    flex: 1;
+    /* overflow-y: scroll; */
+}
+
+.todo__list {
+    margin-top: 15px;
+}
+
+.todo__item {
+    margin-top: 15px;
+    border: 1px solid var(--color-border);
+    padding: 15px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.todo__item--checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.todo__item--checkbox input {
+    cursor: pointer;
+}
+
+.todo__item--checkbox h5 {
+    margin-left: 8px;
+}
+
+.todo__item--action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.action--detail {
+    margin-right: 8px;
+    background-color: var(--color-teal-500);
+}
+
+.action--detail:hover {
+    background-color: var(--color-teal-400);
+}
+
+.action--delete {
+    background-color: var(--color-red-500);
+}
+
+.action--delete:hover {
+    background-color: var(--color-red-400);
+}
+
+.todo__item--detail {
+    border: 1px solid var(--color-border);
+}
