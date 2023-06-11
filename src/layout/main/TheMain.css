@@ -36,6 +36,16 @@
     border-right: 1px solid var(--color-border);
 }
 
+.icon-right {
+    background-image: url(../../assets/images/icon-right.png);
+    height: 18px;
+    width: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    cursor: pointer;
+}
+
 /* todolist */
 .todolist {
     flex: 1;
@@ -44,6 +54,18 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.add__newtask {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: var(--color-light-green-500);
+}
+
+.add__newtask:hover {
+    background-color: var(--color-light-green-400);
 }
 
 .todolist h3 {
@@ -58,6 +80,7 @@
     padding: 30px 40px;
     flex: 1;
     overflow-y: auto;
+    position: relative;
 }
 
 .todo__list {
@@ -145,4 +168,61 @@
 
 .action--remove {
     width: 110px;
+}
+
+/* Responsive với thiết bị < 1000 và > 750 */
+@media screen and (max-width: 1000px) {
+    .newtask {
+        padding: 20px 20px;
+    }
+    .header__text {
+        margin-bottom: 0;
+    }
+    .todolist h3 {
+        margin-bottom: 30px;
+    }
+    .todolist__content {
+        padding: 20px 20px;
+    }
+}
+
+/* Responsive với thiết bị < 750 */
+@media screen and (max-width: 750px) {
+    .body {
+        grid-template-columns: 1fr;
+    }
+    .newtask {
+        display: none;
+    }
+    .todo__list {
+        margin-top: 0;
+    }
+    .add__newtask {
+        display: block;
+    }
+    .todo__item {
+        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .todo__item--action {
+        justify-content: space-between;
+        margin-top: 5px;
+    }
+    .todo__item--detail Form {
+        padding: 20px 10px;
+    }
+    .action--detail {
+        width: 100%;
+    }
+    .action--delete {
+        width: 100%;
+    }
+    .class-block {
+        display: block;
+    }
+    .class-none {
+        display: none;
+    }
 }

@@ -54,3 +54,27 @@
 .button__submit:hover {
     background-color: var(--color-light-green-400);
 }
+
+/* Responsive với thiết bị < 1000 và lớn 750 */
+@media screen and (max-width: 1000px) {
+    .wraper {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .form {
+        padding: 30px 0;
+    }
+}
+
+/* Responsive với thiết bị < 750 */
+@media screen and (max-width: 750px) {
+    /* .wraper {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .form {
+        padding: 30px 0;
+    } */
+}

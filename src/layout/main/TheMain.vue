@@ -1,11 +1,15 @@
 <template>
     <div class="body">
-        <div class="newtask">
+        <div class="newtask" :class="{'class-block': showNewTask}">
+            <div class="icon-right" @click="showTodo"></div>
             <h3 class="header__text">New Task</h3>
             <MForm @onSubmit="onSubmit" nameButton="Add"></MForm>
         </div>
-        <div class="todolist">
+        <div class="todolist" :class="{'class-none': showNewTask}">
             <div class="todolist__content">
+                <button class="btn add__newtask" @click="showTask">
+                    New Task
+                </button>
                 <h3 class="header__text">To do list</h3>
                 <input
                     class="input__textarea input__search"
@@ -80,6 +84,7 @@ export default {
             showFooterAction: false,
             selectedDelete: [],
             textSearch: "",
+            showNewTask: false,
         };
     },
     methods: {
@@ -164,6 +169,12 @@ export default {
             this.todo = res.filter(
                 (obj) => obj.title.indexOf(this.textSearch) != -1
             );
+        },
+        showTask() {
+            this.showNewTask = !this.showNewTask;
+        },
+        showTodo() {
+            this.showNewTask = !this.showNewTask;
         },
     },
     created() {
