@@ -169,7 +169,10 @@ export default {
         async getSearchTodo() {
             const res = await getToDo();
             this.todo = res.filter(
-                (obj) => obj.title.indexOf(this.textSearch) != -1
+                (obj) =>
+                    obj.title
+                        .toLowerCase()
+                        .indexOf(this.textSearch.toLowerCase()) != -1
             );
         },
 
