@@ -156,6 +156,9 @@ export default {
             this.getTodoList();
         },
 
+        /**
+         * Hiển thị công viẹc theo tìm kiếm
+         */
         async getSearchTodo() {
             const res = await getToDo();
             this.todo = res.filter(

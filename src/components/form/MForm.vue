@@ -104,6 +104,9 @@ export default {
         },
     },
     methods: {
+        /**
+         * Gửi submit hoặc update
+         */
         async onSubmit(values, actions) {
             values.date = this.todo.date;
             values.piority = this.todo.piority;
