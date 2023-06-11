@@ -114,9 +114,8 @@ export default {
                 this.$emit("onSubmit", values);
                 actions.resetForm();
             } else {
-                console.log(this.todo.id, values);
                 await updateToDo(this.todo.id, values);
-                this.$emit("update");
+                this.$emit("update", this.todo.id);
             }
         },
     },

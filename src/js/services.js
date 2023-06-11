@@ -1,7 +1,7 @@
 import axios from "axios";
 const getToDo = async () => {
     try {
-        const res = await axios.get("http://localhost:3000/todoList");
+        const res = await axios.get("https://add-todolist.vercel.app/todoList");
         return res.data;
     } catch (error) {
         console.log(error);
@@ -10,7 +10,10 @@ const getToDo = async () => {
 
 const addToDo = async (data) => {
     try {
-        const res = await axios.post("http://localhost:3000/todoList", data);
+        const res = await axios.post(
+            "https://add-todolist.vercel.app/todoList",
+            data
+        );
         return res;
     } catch (error) {
         console.log(error);
@@ -19,7 +22,9 @@ const addToDo = async (data) => {
 
 const deleteToDo = async (id) => {
     try {
-        const res = await axios.delete(`http://localhost:3000/todoList/${id}`);
+        const res = await axios.delete(
+            `https://add-todolist.vercel.app/todoList/${id}`
+        );
         return res;
     } catch (error) {
         console.log(error);
@@ -29,7 +34,7 @@ const deleteToDo = async (id) => {
 const deleteSelectedToDo = async (arrId) => {
     try {
         const deletePromises = arrId.map((id) =>
-            axios.delete(`http://localhost:3000/todoList/${id}`)
+            axios.delete(`https://add-todolist.vercel.app/todoList/${id}`)
         );
         const res = await Promise.all(deletePromises);
         return res;
@@ -41,7 +46,7 @@ const deleteSelectedToDo = async (arrId) => {
 const updateToDo = async (id, data) => {
     try {
         const res = await axios.put(
-            `http://localhost:3000/todoList/${id}`,
+            `https://add-todolist.vercel.app/todoList/${id}`,
             data
         );
         return res;

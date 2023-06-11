@@ -99,8 +99,10 @@ export default {
         /**
          * Hiển thị công việc
          */
-        async getTodoList() {
+        async getTodoList(idItem) {
             const res = await getToDo();
+            let index = this.arrIdShow.indexOf(idItem);
+            this.arrIdShow.splice(index, index + 1);
             this.todo = res;
         },
 
@@ -157,7 +159,7 @@ export default {
          */
         async removeSelected() {
             await deleteSelectedToDo(this.selectedDelete);
-            this.showFooterAction = true;
+            this.showFooterAction = false;
             this.getTodoList();
         },
 
@@ -170,6 +172,10 @@ export default {
                 (obj) => obj.title.indexOf(this.textSearch) != -1
             );
         },
+
+        /**
+         * Sử dụng với thiết bị mobie
+         */
         showTask() {
             this.showNewTask = !this.showNewTask;
         },
