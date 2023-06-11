@@ -5,9 +5,14 @@
             <MForm @onSubmit="onSubmit" nameButton="Add"></MForm>
         </div>
         <div class="todolist">
-            <div class="content">
+            <div class="todolist__content">
                 <h3 class="header__text">To do list</h3>
-                <MTextfield placeHoder="Search..."></MTextfield>
+                <input
+                    class="input__textarea input__search"
+                    placeholder="Search..."
+                    v-model="textSearch"
+                    @input="getSearchTodo"
+                />
                 <div
                     class="todo__list"
                     v-for="todoItem in todo"
@@ -15,7 +20,10 @@
                 >
                     <div class="todo__item">
                         <div class="todo__item--checkbox">
-                            <input type="checkbox" />
+                            <input
+                                type="checkbox"
+                                @click="showFooter(todoItem.id)"
+                            />
                             <h5>{{ todoItem.title }}</h5>
                         </div>
                         <div class="todo__item--action">
@@ -44,12 +52,24 @@
                     </div>
                 </div>
             </div>
+            <div class="footer" v-if="showFooterAction">
+                <h4 class="footer__text">Bulk action:</h4>
+                <div class="footer__action">
+                    <button class="btn action--done">Done</button>
+                    <button
+                        class="btn action--remove action--delete"
+                        @click="removeSelected"
+                    >
+                        Remove
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import {getToDo, addToDo, deleteToDo} from "@/js/services";
+import {getToDo, addToDo, deleteToDo, deleteSelectedToDo} from "@/js/services";
 export default {
     name: "TheMain",
     data() {
@@ -57,6 +77,9 @@ export default {
             arrIdShow: [],
             showDetail: null,
             todo: [{}],
+            showFooterAction: false,
+            selectedDelete: [],
+            textSearch: "",
         };
     },
     methods: {
@@ -64,7 +87,6 @@ export default {
          * Thêm một công việc
          */
         async onSubmit(values) {
-            console.log(values);
             await addToDo(values);
             this.getTodoList();
         },
@@ -75,7 +97,6 @@ export default {
         async getTodoList() {
             const res = await getToDo();
             this.todo = res;
-            console.log(this.todo);
         },
 
         /**
@@ -86,6 +107,9 @@ export default {
             this.getTodoList();
         },
 
+        /**
+         * Hiển thị chi tiết công việc
+         */
         showDetailTodo(idItem) {
             if (this.arrIdShow.indexOf(idItem) != -1) {
                 let index = this.arrIdShow.indexOf(idItem);
@@ -95,6 +119,48 @@ export default {
                 this.showDetail = idItem;
                 this.arrIdShow.push(idItem);
             }
+        },
+
+        /**
+         * Hiện thanh chỉnh sửa phía dưới
+         */
+        showFooter(idItem) {
+            //Kiểm tra nếu chọn input từ 1 trở lên thì sẽ luôn hiện và khi không chọn gì sẽ mất
+            if (this.selectedDelete.length > 1) {
+                this.showFooterAction = true;
+            } else if (this.selectedDelete.length == 1) {
+                if (this.selectedDelete[0] == idItem) {
+                    this.showFooterAction = false;
+                } else {
+                    this.showFooterAction = true;
+                }
+            } else {
+                this.showFooterAction = this.showFooterAction ? false : true;
+            }
+
+            //Kiểm tra xem nếu phần tử đó có rồi thì xóa đi mà chưa có thì thêm vào
+            if (this.selectedDelete.indexOf(idItem) != -1) {
+                let index = this.selectedDelete.indexOf(idItem);
+                this.selectedDelete.splice(index, index + 1);
+            } else {
+                this.selectedDelete.push(idItem);
+            }
+        },
+
+        /**
+         * Xóa tất cả những công việc đã chọn
+         */
+        async removeSelected() {
+            await deleteSelectedToDo(this.selectedDelete);
+            this.showFooterAction = true;
+            this.getTodoList();
+        },
+
+        async getSearchTodo() {
+            const res = await getToDo();
+            this.todo = res.filter(
+                (obj) => obj.title.indexOf(this.textSearch) != -1
+            );
         },
     },
     created() {

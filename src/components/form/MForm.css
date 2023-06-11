@@ -17,21 +17,6 @@
     position: relative;
 }
 
-.input-textarea {
-    border: 1px solid var(--color-border);
-    resize: none;
-    outline: none;
-    padding: 6px 12px;
-    border-radius: var(--border-radius);
-    font-size: 14px;
-    width: 100%;
-}
-
-.form__controller .input-textarea:focus {
-    outline: none;
-    border: 1px solid var(--color-light-green-500);
-}
-
 .form__controller textarea {
     min-height: 80px;
 }

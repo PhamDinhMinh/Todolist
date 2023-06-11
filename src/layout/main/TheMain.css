@@ -14,13 +14,15 @@
 }
 
 .newtask::-webkit-scrollbar,
-.todolist::-webkit-scrollbar {
+.todolist::-webkit-scrollbar,
+.todolist__content::-webkit-scrollbar {
     width: 6px;
     height: 6px;
     cursor: pointer;
 }
 /* Track */
 .newtask::-webkit-scrollbar-track,
+.todolist__content::-webkit-scrollbar-track,
 .todolist::-webkit-scrollbar-track {
     background-color: #ccc;
     border-radius: 4px;
@@ -37,21 +39,33 @@
 /* todolist */
 .todolist {
     flex: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .todolist h3 {
     margin-bottom: 64px;
 }
 
-.content {
+.input__search {
+    height: var(--height-input);
+}
+
+.todolist__content {
     padding: 30px 40px;
     flex: 1;
-    /* overflow-y: scroll; */
+    overflow-y: auto;
 }
 
 .todo__list {
     margin-top: 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .todo__item {
@@ -101,4 +115,34 @@
 
 .todo__item--detail {
     border: 1px solid var(--color-border);
+}
+
+/* Footer */
+.footer {
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+}
+
+.footer__action {
+    display: flex;
+}
+
+.action--done {
+    background-color: var(--dark-blue-500);
+    width: 110px;
+    margin-right: 8px;
+}
+
+.action--done:hover {
+    background-color: var(--dark-blue-400);
+}
+
+.action--remove {
+    width: 110px;
 }

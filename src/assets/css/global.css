@@ -51,14 +51,17 @@ h2 {
     font-size: 14px;
 }
 
-.text-align--center {
-    text-align: center;
+.input__textarea {
+    border: 1px solid var(--color-border);
+    resize: none;
+    outline: none;
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    width: 100%;
 }
 
-.text-align--left {
-    text-align: left;
-}
-
-.text-align--right {
-    text-align: right;
+.input__textarea:focus {
+    outline: none;
+    border: 1px solid var(--color-light-green-500);
 }

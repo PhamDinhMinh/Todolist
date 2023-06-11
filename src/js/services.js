@@ -26,6 +26,18 @@ const deleteToDo = async (id) => {
     }
 };
 
+const deleteSelectedToDo = async (arrId) => {
+    try {
+        const deletePromises = arrId.map((id) =>
+            axios.delete(`http://localhost:3000/todoList/${id}`)
+        );
+        const res = await Promise.all(deletePromises);
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 const updateToDo = async (id, data) => {
     try {
         const res = await axios.put(
@@ -38,4 +50,4 @@ const updateToDo = async (id, data) => {
     }
 };
 
-export {addToDo, deleteToDo, updateToDo, getToDo};
+export {addToDo, deleteToDo, updateToDo, getToDo, deleteSelectedToDo};

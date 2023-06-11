@@ -1,14 +1,14 @@
 <template>
     <Form class="form" :validation-schema="schema" @submit="onSubmit">
         <div class="form__controller">
-            <label for="add" class="label__textfield">Add new task</label>
             <div>
                 <Field name="title" v-model="todo.title" v-slot="{field}">
                     <input
                         id="add"
-                        class="input-textarea"
+                        class="input__textarea"
                         v-bind="field"
                         :value="todo.title"
+                        placeholder="Add new task"
                     />
                 </Field>
                 <ErrorMessage name="title" class="text-help" />
@@ -26,7 +26,7 @@
                 >
                     <textarea
                         id="description"
-                        class="input-textarea"
+                        class="input__textarea"
                         v-bind="field"
                         :value="todo.description"
                     ></textarea>
@@ -40,7 +40,7 @@
                 <div>
                     <input
                         id="duodate"
-                        class="input-textarea"
+                        class="input__textarea"
                         v-model="todo.date"
                         type="date"
                     />
@@ -51,7 +51,7 @@
                 <select
                     name="piority"
                     id="piority"
-                    class="input-textarea"
+                    class="input__textarea"
                     v-model="todo.piority"
                     :value="todo.piority"
                 >
@@ -104,11 +104,12 @@ export default {
         },
     },
     methods: {
-        async onSubmit(values) {
+        async onSubmit(values, actions) {
             values.date = this.todo.date;
             values.piority = this.todo.piority;
             if (this.nameButton == "Add") {
                 this.$emit("onSubmit", values);
+                actions.resetForm();
             } else {
                 console.log(this.todo.id, values);
                 await updateToDo(this.todo.id, values);
